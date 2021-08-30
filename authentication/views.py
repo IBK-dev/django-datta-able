@@ -13,6 +13,9 @@ from django.forms.utils import ErrorList
 from django.http import HttpResponse
 from .forms import LoginForm, SignUpForm
 
+from société.forms import société  
+from société.models import société 
+
 def login_view(request):
     form = LoginForm(request.POST or None)
 
@@ -58,3 +61,38 @@ def register_user(request):
         form = SignUpForm()
 
     return render(request, "accounts/register.html", {"form": form, "msg" : msg, "success" : success })
+
+
+            #return redirect("/login/")
+
+ 
+# View number 2 #   
+def soc(request):  
+    if request.method == "POST":  
+        form = sociétéForm(request.POST)  
+        if form.is_valid():  
+            try:  
+                form.save()  
+                return redirect('/show')  
+            except:  
+                pass  
+    else:  
+        form = sociétéForm()  
+    return render(request,'index.html',{'form':form})  
+def show(request):  
+    société = société.objects.all()  
+    return render(request,"show.html",{'société':société})  
+def edit(request, id):  
+    société = société.objects.get(id=id)  
+    return render(request,'edit.html', {'société':société})  
+def update(request, id):  
+    société = Employee.objects.get(id=id)  
+    form = EmployeeForm(request.POST, instance = société)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/show")  
+    return render(request, 'edit.html', {'société': société})  
+def destroy(request, id):  
+    société = société.objects.get(id=id)  
+    société.delete()  
+    return redirect("/show")  
