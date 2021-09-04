@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',  # Enable the inner app
+    'crudapp'
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ TEMPLATE_DIR = os.path.join(CORE_DIR, "core/templates")  # ROOT dir for template
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')], # J'ai modifié ca aussi.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
