@@ -29,10 +29,11 @@
         <!-- [ breadcrumb ] end -->
         <div class="main-body">
             <div class="page-wrapper">
-                <!-- [ Main Content ] start -->
-                <form action ='{% url 'societ' %}' method="POST">
-            {% csrf_token %}
-            
+
+
+            <form action ='{% url 'ajout' %}'>
+            {% {% csrf_token %} %}
+            {{ form.as_p }}
 
                 <!-- [ Main Content ] start -->
                 <div class="row">
