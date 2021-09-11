@@ -30,8 +30,8 @@
         <div class="main-body">
             <div class="page-wrapper">
                 <!-- [ Main Content ] start -->
-                <form action ='{% url 'societ' %}' method="POST">
-            {% csrf_token %}
+                <form action ='{% url 'creation_de_societe' %}' method="POST">
+                {% csrf_token %}
             
 
                 <!-- [ Main Content ] start -->
@@ -46,6 +46,8 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">
+
+                                    
                                        
                                             <div class="form-group">
                                                 <label>RAISON SOCIALE</label>
@@ -124,7 +126,7 @@
                                                 <label for="exampleFormControlTextarea1">Adresse</label> 
                                                 <textarea name="adress" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                                             </div>
-                                       
+                                      
                                     </div>
                                 </div>
                             </div>

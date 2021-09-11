@@ -1,0 +1,109 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Tables</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Basic Tables</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    
+
+                    <!-- [ stiped-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Sociétés</h2>
+                                <div class="text-right">
+                                
+                                <form method="POST" action="{% url 'creation_de_societe' %}">
+                                
+                                <button type="submit" class="btn btn-primary " title="btn btn-primary" data-toggle="tooltip">Ajouter une Société </button>
+                                {% csrf_token %}
+                                </form>
+                                
+                                
+                                
+                                </div>
+                                <span class="d-block m-t-5">Liste des sociétés : </span>
+                                
+                            </div>
+                    
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Raison sociale</th>
+                                                <th>IDENTIFIANT FISCAL</th>
+                                                <th>Nom</th>
+                                                <th>Prénom</th>
+                                                <th>C.N.I.</th>
+                                                <th>I.C.E.</th>
+                                                <th>Taxe Professionnel</th>
+                                                <th>Régime</th>
+                                                <th>RC</th>
+                                                <th>Périodicité</th>
+                                                <th>Commune</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for soci in societes %}
+                                            <tr>
+                                                <td>{{soci.raisonSocial}}</td>
+                                                <td>{{soci.iff}}</td>
+                                                <td>{{soci.ice}}</td>
+                                                <td>{{soci.tp}}</td>
+                                                <td>{{soci.rc}}</td>
+                                                <td>{{soci.cnss}}</td>
+                                                <td>{{soci.formJuridique}}</td>
+                                                <td>{{soci.adress}}</td>
+                                                <td>{{soci.model}}</td>
+                                                <td>{{soci.regime}}</td>
+                                                <td>{{soci.commune}}</td>
+                                              
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ stiped-table ] end -->
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

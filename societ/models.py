@@ -1,7 +1,9 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.forms import ModelForm,Textarea
-#from django.contrib.auth.models import user
+from django.db import connections
+
+
 # Create your models here.
 class Societe(models.Model):
         id = models.IntegerField(primary_key=True)
