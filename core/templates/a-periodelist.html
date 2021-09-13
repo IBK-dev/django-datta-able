@@ -37,38 +37,38 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5>Exercices</h5>
-                                <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span>
+                            
+                                <div class="text-right">
+                                <form method="POST" action="{% url 'periodes_creat' %}">
+                                
+                                <button type="submit" class="btn btn-primary " title="btn btn-primary" data-toggle="tooltip">Ajouter une Société </button>
+                                {% csrf_token %}
+                                </form> 
+                                
+
+                                </div>
+                            
+                                <span class="d-block m-t-5">Liste des sociétés : </span>
                             </div>
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                
                                                 <th>Nom</th>
                                                 <th>Année</th>
                                                 <th>Prorata</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        {% for per in periodes %}
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
+                                                <td>{{per.Nom}}</td>
+                                                <td>{{per.Année}}</td>
+                                                <td>{{per.Prorata}}</td>
+                                               </tr>
+                                                {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>

@@ -18,11 +18,13 @@ class Societe(models.Model):
         model=models.CharField(max_length=200,null=True)
         regime=models.CharField(max_length=200)
         commune=models.CharField(max_length=200)
-        profile_pic=models.ImageField(upload_to='soicetesLogos',null=True, blank=True)
+        #profile_pic=models.ImageField(upload_to='soicetesLogos',null=True, blank=True)
 class  Meta:
         db_table="societ"
-class simpleUser (models.Model):
-    user=models.OneToOneField(User,null=True,on_delete=models.CASCADE)
-    societe=models.ManyToManyField(Societe)
-    class  Meta:
-        db_table="simpleUser"
+
+
+#class simpleUser(models.Model):
+#       user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+  #      societe = models.ManyToManyField(Societe)
+#class  Meta:
+ #       db_table="simpleUser"

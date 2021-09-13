@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'app',  # Enable the inner app
     'societ',
 
+    # Exercices apps
+    'exercices',
 ]
 
 MIDDLEWARE = [

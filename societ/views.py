@@ -1,13 +1,14 @@
 from django.core.checks import messages
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Societe, simpleUser
+from .models import Societe#, simpleUser
 
  
 # Create your views here.
 
 
-def Creation_de_societe(request): 
+def Creation_de_societe(request):
+ 
     if request.method=='POST':
      if request.POST.get('raisonSocial'):
            savecord=Societe()
@@ -29,6 +30,7 @@ def Creation_de_societe(request):
            societes=Societe.objects.all()
            context={'societes':societes}
            return render(request,'a-societelist.html',context)
+          
     else:
           print("Hollo world")
     societes=Societe.objects.all()
@@ -105,4 +107,4 @@ def Delete_societe(request,pk):
   deletSociete.delete()
   societes=Societe.objects.all()
   context={'societes':societes}
-  return render(request,'societe.html',context) 
+  return render(request,'a-Societelist.html',context) 
