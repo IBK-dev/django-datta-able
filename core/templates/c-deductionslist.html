@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} UI Tables {% endblock %} 
+{% block title %} Encaissements {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -37,8 +37,14 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Encaissements</h5>
-                                <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span>
+                                <h5>Etat des Déductions</h5>
+                                <div class="text-right">
+                                <form method="POST" action="{% url 'deductions_creat' %}">
+                                
+                                <button type="submit" class="btn btn-primary " title="Ajouter" data-toggle="tooltip">Ajouter une déductions </button>
+                                {% csrf_token %}
+                                </form> 
+                                
                             </div>
                             <div class="card-block table-border-style">
                                 <div class="table-responsive">
@@ -47,50 +53,41 @@
                                             <tr>
                                                 <th>Numéro de Facture</th>
                                                 <th>Date Facture</th>
-                                                <th>Client</th>
+                                                <th>Fournisseur</th>
                                                 <th>Nature</th>
                                                 <th>Référence</th>
                                                 <th>Code TVA</th>
                                                 <th>Montant H.T.</th>
                                                 <th>Montant T.V.A.</th>
                                                 <th>Montant T.T.C.</th>
+                                                <th>Date de paiement</th>
+                                                <th>Mode de paiement</th>
+                                                <th>Prorata</th>
+                                                <th>TVA Déductible</th>
+                                                <th>Non_resident</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        {% for ded in deduction %}
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
+                                                <td>{{ded.Numéro_Facture}}</td>
+                                                <td>{{ded.Date_Facture}}</td>
+                                                <td>{{ded.Fournisseur}}</td>
+                                                <td>{{ded.Nature}}</td>
+                                                <td>{{ded.Référence}}</td>
+                                                <td>{{ded.Code_TVA}}</td>
+                                                <td>{{ded.Montant_HT}}</td>
+                                                <td>{{ded.Montant_TVA}}</td>
+                                                <td>{{ded.Montant_TTC}}</td>
+                                                <td>{{ded.Date_paiement}}</td>
+                                                <td>{{ded.Mode_paiement}}</td>
+                                                <td>{{ded.Prorata}}</td>
+                                                <td>{{ded.TVA_déductible}}</td>
+                                                <td>{{ded.Non_resident}}</td>
+                                                
                                             </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            </tr>
+                                         {% endfor %}
+                                           
                                         </tbody>
                                     </table>
                                 </div>

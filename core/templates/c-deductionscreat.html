@@ -1,0 +1,143 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Déductions {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Société</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Form Componants</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Form Elements</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <form action ='{% url 'deductions_creat' %}' method="POST">
+                {% csrf_token %}
+            
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Informations</h5>
+                            </div>
+                            <div class="card-body">
+                                <h5>Form controls</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                    
+                                       
+                                            <div class="form-group">
+                                                <label>Numéro de Facture</label>
+                                                <input type="text" class="form-control" placeholder="Numéro de Facture" name="Numéro_Facture">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Fournisseur</label>
+                                                <input type="text" class="form-control" placeholder="Fournisseur" name="Fournisseur">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nature</label>
+                                                <input type="text" class="form-control" placeholder="Nature" name="Nature">
+                                            </div>
+                                           
+                                            
+                                            <div class="form-group">
+                                                <label>Montant H.T.</label>
+                                                <input type="text" class="form-control" placeholder="Montant H.T." name="Montant_HT">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Montant T.T.C.</label>
+                                                <input type="text" class="form-control" placeholder="Montant T.T.C." name="Montant_TTC">
+                                            </div>
+                                            
+                                         <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Mode de paiement</label>
+                                                <select class="form-control" id="exampleFormControlSelect1" name="Mode_paiement">
+                                                    <option>Espece</option>
+                                                    <option>Chèque</option>
+                                                    <option>Virement</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>TVA Déductible</label>
+                                                <input type="text" class="form-control" placeholder="TVA Déductible" name="TVA_déductible">
+                                            </div>
+
+                                           <button type="submit" class="btn btn-primary">Enregistrer</button> 
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                      
+                                            <div class="form-group">
+                                                <label>Date de Facture</label>
+                                                <input type="text" class="form-control" placeholder="Date de Facture" name="Date_Facture">
+                                            </div>
+                                             <div class="form-group">
+                                                <label>Référence de paiement</label>
+                                                <input type="text" class="form-control" placeholder="Référence" name="Référence">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Code TVA</label>
+                                                <select class="form-control" id="exampleFormControlSelect1" name="Code_TVA">
+                                                    <option>Code1</option>
+                                                    <option>Code2</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Montant T.V.A.</label>
+                                                <input type="text" class="form-control" placeholder="Montant T.V.A." name="Montant_TVA">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Date de paiement</label>
+                                                <input type="text" class="form-control" placeholder="Date de paiement" name="Date_paiement">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Prorata</label>
+                                                <input type="text" class="form-control" placeholder="Prorata" name="Prorata">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Non_resident</label>
+                                                <select class="form-control" id="exampleFormControlSelect1" name="Non_resident">
+                                                    <option>Non</option>
+                                                    <option>oui</option>
+                                                </select>
+                                            </div>
+                                            
+                                            
+
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

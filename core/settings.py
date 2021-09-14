@@ -35,6 +35,8 @@ INSTALLED_APPS = [
 
     # Exercices apps
     'exercices',
+    'encaissements',
+    'deductions',
 ]
 
 MIDDLEWARE = [
