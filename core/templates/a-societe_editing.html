@@ -1,0 +1,170 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#!">Tables</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Basic Tables</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ breadcrumb ] end -->
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    
+
+                    <!-- [ stiped-table ] start -->
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Sociétés</h2>
+                                <div class="text-right">
+                                
+                                
+                                </div>
+                                <span class="d-block m-t-5">Liste des sociétés : </span>
+                                
+                            </div>
+                    
+                            <div class="card-block table-border-style">
+                                <div class="table-responsive">
+                                    <table>
+                            <tbody>
+                                <form action="/std/" method="POST">
+                                    <div class="card border-light shadow-sm">
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-centered table-nowrap mb-0 rounded">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th class="border-0">#LOGO</th>
+                                                            <th class="border-0">RS</th>
+                                                            <th class="border-0">IF</th>
+                                                            <th class="border-0">ICE</th>
+                                                            <th class="border-0">TP</th>
+                                                            <th class="border-0">sRC</th>
+                                                            <th class="border-0">CNSS</th>
+                                                            <th class="border-0">FORME JURIDIQUE</th>
+                                                            <th class="border-0">ADRESS</th>
+                                                            <th class="border-0">MODEL</th>
+                                                            <th class="border-0">REGIME</th>
+                                                            <th class="border-0">COMMUNE</th>
+                                                            {% if request.user.is_staff %}
+                                                            <th class="border-0">ACTIONS</th>
+                                                            {% endif %}
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <!-- Item -->
+                                                        {% for societe in societes %}
+                                                        <tr>
+                                                        
+                                                            <td class="border-0">                                             
+                                                                <a href="#" class="d-flex align-items-center">
+                                                                    <div><span class="h6">{{ societe.raisonSocial }} </span></div>
+                                                                </a>
+                                                            </td>
+                                                            <td class="border-0">                                             
+                                                                <a href="#" class="d-flex align-items-center">
+                                                                    <div><span class="h6">{{societe.iff}}</span></div>
+                                                                </a>
+                                                            </td>
+                                                            <td class="border-0 fw-bold"> {{societe.ice}} </td>
+                                                            <td class="border-0 ">
+                                                                {{societe.tp}}
+                                                            </td>
+                                                            <td class="border-0 fw-bold">
+                                                                {{societe.rc}}
+                                                            </td>
+                                                            <td class="border-0">
+                                                                {{societe.cnss}}
+                                                            </td>
+                                                            <td class="border-0 fw-bold">
+                                                                {{societe.formJuridique}}
+                                                            </td>
+                                                            <td class="border-0 ">
+                                                                {{societe.adress}}
+                                                            </td>
+                                                            <td class="border-0 ">
+                                                                
+                                                                <span class="fw-bold">{{societe.model}} </span>
+                                                            </td>
+                                                            <td class="border-0 ">
+                                                                
+                                                                <span class="fw-bold"> {{societe.regime}}</span>
+                                                            </td>
+                                                            <td class="border-0 ">
+                                                                
+                                                                <span class="fw-bold"> {{societe.commune}}</span>
+                                                            </td>
+                                                                <td class="border-0">
+                                                                <a href="#" class="d-flex align-items-center">
+                                                                    {% if request.user.is_staff %}
+                                                                    <span><a href="{% url 'VisualiserSociete' societe.id %}">  <img class="me-2 image image-small rounded-circle" alt="eye" src="/static/assets/img/flags/eye_40px.png" ></a></span>
+                                                                    <span><a>  <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="/static/assets/img/flags/secured_letter_64px.png"> </a></span>
+                                                                    <span><a href="{% url 'Delete_societe' societe.id  %}"  > <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="/static/assets/img/flags/remove_100px.png"></a> </span>
+                                                                    {% endif %}
+                                                                </a>
+                                                                    
+                                                                </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        <!-- End of Item -->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </form>
+                            </tbody>
+                        </table>
+                        {% if request.user.is_staff %}
+                            <div class="card-body">
+                                <a class="btn btn-dark animate-hover" href="{% url 'creation_de_societe' %}">
+                                    <i class="fas fa-chevron-left me-3 ps-2 animate-left-3"></i>Ajouter une nouvelle societe</a>
+
+                            </div>
+                            {% endif %}
+                            <script>
+                                $('.building-link').click(function(){
+                                    $('#building-name').html($(this).data('name'));
+                                    $('#building-description').html($(this).data('description'));
+                                    $('#building-img').src($(this).data('img'));
+                                });
+                                </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ stiped-table ] end -->
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

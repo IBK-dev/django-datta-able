@@ -70,7 +70,7 @@
                                                 <th>Périodicité</th>
                                                 <th>Commune</th>
                                                 <th>Editer</th>
-                                                <th>Supprimer</th>
+                                               
 
                                                
                                             </tr>
@@ -89,26 +89,19 @@
                                                 <td>{{soci.model}}</td>
                                                 <td>{{soci.regime}}</td>
                                                 <td>{{soci.commune}}</td>
-                                                </td>
+                                                
+                                                
                                                 <td class="border-0">
                                                 <a href="#" class="d-flex align-items-center">
                                                     {% if request.user.is_staff %}
                                                         
-                                                    <span><a>  <img class="me-2 image image-small rounded-circle" alt="Image placeholder" width="20" height="20" src="/static/assets/images/buttons/remove_100px.png"> </a></span>
+                                                    <span><a  href = "{% url 'Delete_societe' soci.id  %}" class="feather icon-edit-1"></a> </span>
                                                     
+                                                    <span><a  href = "{% url 'Delete_societe' soci.id  %}" class="feather icon-delete"></a> </span>
                                                     {% endif %}
                                                 </a>
-                                                    
-                                                </td>
-                                              </td>
-                                                <td class="border-0">
-                                                <a href="#" class="d-flex align-items-center">
-                                                    {% if request.user.is_staff %}
-                                                    <span><a href="{% url 'Delete_societe' soci.id  %}"  > <img class="me-2 image image-small rounded-circle" alt="Image placeholder" width="20" height="20" src="/static/assets/images/buttons/remove_100px.png"></a> </span>
-                                                    {% endif %}
-                                                </a>
-                                                    
-                                                </td>
+                                                
+                                             
                                             </tr>
                                             {% endfor %}
                                         </tbody>

@@ -37,7 +37,28 @@ def Creation_de_societe(request):
     context={'societes':societes}
     return render(request,'a-société.html',context)
         
-
+def Edite_societe(request,pk):
+       if request.method=='POST':
+          if request.POST.get('raisonSocial'):
+           societes=Societe.objects.get(id=pk)
+           societes.raisonSocial = request.POST.get('raisonSocial')
+           societes.iff = request.POST.get('iff')
+           societes.ice = request.POST.get('ice')
+           societes.tp = request.POST.get('tp')
+           societes.rc = request.POST.get('rc')
+           societes.cnss = request.POST.get('cnss')
+           societes.formJuridique = request.POST.get('formJuridique')
+           societes.adress = request.POST.get('adress')
+           societes.model = request.POST.get('model')
+           societes.regime = request.POST.get('regime')
+           societes.commune = request.POST.get('commune')
+           
+           societes.save()
+          
+           context={'societes':societes}
+           messages.success(request,'creation succes...')
+           return render(request,'societe_editing.html',context) 
+   
 
 def AffichageCard(request):
       if request.user.is_staff:
@@ -89,11 +110,11 @@ def Edite_societe(request,pk):
            societes.model = request.POST.get('model')
            societes.regime = request.POST.get('regime')
            societes.commune = request.POST.get('commune')
-           if len(request.FILES) !=0 :
-              societes.profile_pic= request.FILES['logoSociete']
-              societes.save()
-           else:
-               societes.save()
+           #if len(request.FILES) !=0 :
+              #societes.profile_pic= request.FILES['logoSociete']
+              #societes.save()
+           #else:
+           societes.save()
           
            context={'societes':societes}
            messages.success(request,'creation succes...')
