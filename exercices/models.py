@@ -12,6 +12,8 @@ class Exercices(models.Model):
         Année = models.CharField(max_length=200)
         Prorata = models.CharField(max_length=200)
         societe=models.ForeignKey(Societe,null=True,on_delete=models.SET_NULL)
+        model=models.CharField(max_length=200,null=True)
+        regime=models.CharField(max_length=200)
         
 class  Meta:
         db_table="exercices"

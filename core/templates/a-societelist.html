@@ -59,16 +59,13 @@
                                         <thead>
                                             <tr>
                                                 <th>Raison sociale</th>
-                                                <th>IDENTIFIANT FISCAL</th>
+                                                <th>Identifiant Fiscal</th>
                                                 <th>Nom</th>
                                                 <th>Prénom</th>
                                                 <th>C.N.I.</th>
                                                 <th>I.C.E.</th>
                                                 <th>Taxe Professionnel</th>
-                                                <th>Régime</th>
                                                 <th>RC</th>
-                                                <th>Périodicité</th>
-                                                <th>Commune</th>
                                                 <th>Editer</th>
                                                
 
@@ -80,22 +77,20 @@
                                             <tr>
                                                 <td>{{soci.raisonSocial}}</td>
                                                 <td>{{soci.iff}}</td>
+                                                <td>{{soci.nom}}</td>
+                                                <td>{{soci.prenom}}</td>
+                                                <td>{{soci.cni}}</td>
                                                 <td>{{soci.ice}}</td>
                                                 <td>{{soci.tp}}</td>
                                                 <td>{{soci.rc}}</td>
-                                                <td>{{soci.cnss}}</td>
-                                                <td>{{soci.formJuridique}}</td>
-                                                <td>{{soci.adress}}</td>
-                                                <td>{{soci.model}}</td>
-                                                <td>{{soci.regime}}</td>
-                                                <td>{{soci.commune}}</td>
+                                              
                                                 
                                                 
                                                 <td class="border-0">
                                                 <a href="#" class="d-flex align-items-center">
                                                     {% if request.user.is_staff %}
                                                         
-                                                    <span><a  href = "{% url 'Delete_societe' soci.id  %}" class="feather icon-edit-1"></a> </span>
+                                                    <span><a  href = "{% url 'Edite_societe' soci.id  %}" class="feather icon-edit-1"></a> </span>
                                                     
                                                     <span><a  href = "{% url 'Delete_societe' soci.id  %}" class="feather icon-delete"></a> </span>
                                                     {% endif %}

@@ -15,8 +15,11 @@ class Societe(models.Model):
         cnss=models.CharField(max_length=200,null=True)
         formJuridique=models.CharField(max_length=200)
         adress=models.CharField(max_length=200)
-        model=models.CharField(max_length=200,null=True)
-        regime=models.CharField(max_length=200)
+        cni=models.CharField(max_length=200)
+        tel=models.CharField(max_length=200)
+        prenom=models.CharField(max_length=200)
+        nom=models.CharField(max_length=200)
+        ice=models.CharField(max_length=200)
         commune=models.CharField(max_length=200)
         #profile_pic=models.ImageField(upload_to='soicetesLogos',null=True, blank=True)
 class  Meta:

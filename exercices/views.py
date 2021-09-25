@@ -28,7 +28,8 @@ def periodescreation(request):
            savecord.Nom = request.POST.get('Nom')
            savecord.Année = request.POST.get('Année')
            savecord.Prorata = request.POST.get('Prorata')
-           
+           savecord.model = request.POST.get('model')
+           savecord.regime = request.POST.get('regime')
            savecord.save()
            messages.success(request,'creation succes...')
            periodes=Exercices.objects.all()

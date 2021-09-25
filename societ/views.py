@@ -21,9 +21,10 @@ def Creation_de_societe(request):
            savecord.cnss = request.POST.get('cnss')
            savecord.formJuridique = request.POST.get('formJuridique')
            savecord.adress = request.POST.get('adress')
-           savecord.model = request.POST.get('model')
-           savecord.regime = request.POST.get('regime')
-           savecord.commune = request.POST.get('commune')
+           savecord.prenom = request.POST.get('prenom')
+           savecord.nom = request.POST.get('nom')
+           savecord.tel = request.POST.get('tel')
+           savecord.cni = request.POST.get('cni')
            #savecord.profile_pic=request.FILES['logoSociete']
            savecord.save()
            messages.success(request,'creation succes...')
@@ -38,9 +39,10 @@ def Creation_de_societe(request):
     return render(request,'a-société.html',context)
         
 def Edite_societe(request,pk):
-       if request.method=='POST':
+      societes=Societe.objects.get(id=pk)
+      if request.method=='POST':
           if request.POST.get('raisonSocial'):
-           societes=Societe.objects.get(id=pk)
+           
            societes.raisonSocial = request.POST.get('raisonSocial')
            societes.iff = request.POST.get('iff')
            societes.ice = request.POST.get('ice')
@@ -50,14 +52,21 @@ def Edite_societe(request,pk):
            societes.formJuridique = request.POST.get('formJuridique')
            societes.adress = request.POST.get('adress')
            societes.model = request.POST.get('model')
-           societes.regime = request.POST.get('regime')
-           societes.commune = request.POST.get('commune')
+           
+           societes.nom = request.POST.get('nom')
+           societes.prenom = request.POST.get('prenom')
+           societes.tel = request.POST.get('tel')
+           societes.cni = request.POST.get('cni')
            
            societes.save()
           
            context={'societes':societes}
            messages.success(request,'creation succes...')
-           return render(request,'societe_editing.html',context) 
+           return render(request,'a-societe_editing.html',context)
+      else:
+           context={'societes':societes}
+           messages.success(request,'creation succes...')
+           return render(request,'a-societe_editing.html',context)
    
 
 def AffichageCard(request):
@@ -88,39 +97,12 @@ def societe(request):
 
 
 
-
-
 def Visualiser_societe(request,pk):
   societes=Societe.objects.get(id=pk)
   context={'societes':societes}
   return render(request,'a-societelist.html',context)
 
-def Edite_societe(request,pk):
-   if request.method=='POST':
-     if request.POST.get('raisonSocial'):
-           societes=Societe.objects.get(id=pk)
-           societes.raisonSocial = request.POST.get('raisonSocial')
-           societes.iff = request.POST.get('iff')
-           societes.ice = request.POST.get('ice')
-           societes.tp = request.POST.get('tp')
-           societes.rc = request.POST.get('rc')
-           societes.cnss = request.POST.get('cnss')
-           societes.formJuridique = request.POST.get('formJuridique')
-           societes.adress = request.POST.get('adress')
-           societes.model = request.POST.get('model')
-           societes.regime = request.POST.get('regime')
-           societes.commune = request.POST.get('commune')
-           #if len(request.FILES) !=0 :
-              #societes.profile_pic= request.FILES['logoSociete']
-              #societes.save()
-           #else:
-           societes.save()
-          
-           context={'societes':societes}
-           messages.success(request,'creation succes...')
-           return render(request,'societe_editing.html',context) 
-   else:
-           return render(request,'societe_editing.html')     
+  
 
 
 def Delete_societe(request,pk):

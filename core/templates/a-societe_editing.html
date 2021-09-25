@@ -1,6 +1,6 @@
 {% extends "layouts/base.html" %}
 
-{% block title %} UI Tables {% endblock %} 
+{% block title %} UI Forms {% endblock %} 
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -15,12 +15,12 @@
                 <div class="row align-items-center">
                     <div class="col-md-12">
                         <div class="page-header-title">
-                            <h5 class="m-b-10">Bootstrap Basic Tables</h5>
+                            <h5 class="m-b-10">Société</h5>
                         </div>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#!">Tables</a></li>
-                            <li class="breadcrumb-item"><a href="javascript:">Basic Tables</a></li>
+                            <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Form Componants</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:">Form Elements</a></li>
                         </ul>
                     </div>
                 </div>
@@ -30,141 +30,99 @@
         <div class="main-body">
             <div class="page-wrapper">
                 <!-- [ Main Content ] start -->
-                <div class="row">
-                    
+                <form  method="POST" action ='{% url 'Edite_societe' societes.id %}'>
+                {% csrf_token %}
+            
 
-                    <!-- [ stiped-table ] start -->
-                    <div class="col-xl-12">
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <h2>Sociétés</h2>
-                                <div class="text-right">
-                                
-                                
-                                </div>
-                                <span class="d-block m-t-5">Liste des sociétés : </span>
-                                
+                                <h5>Informations</h5>
                             </div>
-                    
-                            <div class="card-block table-border-style">
-                                <div class="table-responsive">
-                                    <table>
-                            <tbody>
-                                <form action="/std/" method="POST">
-                                    <div class="card border-light shadow-sm">
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-centered table-nowrap mb-0 rounded">
-                                                    <thead class="thead-light">
-                                                        <tr>
-                                                            <th class="border-0">#LOGO</th>
-                                                            <th class="border-0">RS</th>
-                                                            <th class="border-0">IF</th>
-                                                            <th class="border-0">ICE</th>
-                                                            <th class="border-0">TP</th>
-                                                            <th class="border-0">sRC</th>
-                                                            <th class="border-0">CNSS</th>
-                                                            <th class="border-0">FORME JURIDIQUE</th>
-                                                            <th class="border-0">ADRESS</th>
-                                                            <th class="border-0">MODEL</th>
-                                                            <th class="border-0">REGIME</th>
-                                                            <th class="border-0">COMMUNE</th>
-                                                            {% if request.user.is_staff %}
-                                                            <th class="border-0">ACTIONS</th>
-                                                            {% endif %}
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <!-- Item -->
-                                                        {% for societe in societes %}
-                                                        <tr>
-                                                        
-                                                            <td class="border-0">                                             
-                                                                <a href="#" class="d-flex align-items-center">
-                                                                    <div><span class="h6">{{ societe.raisonSocial }} </span></div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="border-0">                                             
-                                                                <a href="#" class="d-flex align-items-center">
-                                                                    <div><span class="h6">{{societe.iff}}</span></div>
-                                                                </a>
-                                                            </td>
-                                                            <td class="border-0 fw-bold"> {{societe.ice}} </td>
-                                                            <td class="border-0 ">
-                                                                {{societe.tp}}
-                                                            </td>
-                                                            <td class="border-0 fw-bold">
-                                                                {{societe.rc}}
-                                                            </td>
-                                                            <td class="border-0">
-                                                                {{societe.cnss}}
-                                                            </td>
-                                                            <td class="border-0 fw-bold">
-                                                                {{societe.formJuridique}}
-                                                            </td>
-                                                            <td class="border-0 ">
-                                                                {{societe.adress}}
-                                                            </td>
-                                                            <td class="border-0 ">
-                                                                
-                                                                <span class="fw-bold">{{societe.model}} </span>
-                                                            </td>
-                                                            <td class="border-0 ">
-                                                                
-                                                                <span class="fw-bold"> {{societe.regime}}</span>
-                                                            </td>
-                                                            <td class="border-0 ">
-                                                                
-                                                                <span class="fw-bold"> {{societe.commune}}</span>
-                                                            </td>
-                                                                <td class="border-0">
-                                                                <a href="#" class="d-flex align-items-center">
-                                                                    {% if request.user.is_staff %}
-                                                                    <span><a href="{% url 'VisualiserSociete' societe.id %}">  <img class="me-2 image image-small rounded-circle" alt="eye" src="/static/assets/img/flags/eye_40px.png" ></a></span>
-                                                                    <span><a>  <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="/static/assets/img/flags/secured_letter_64px.png"> </a></span>
-                                                                    <span><a href="{% url 'Delete_societe' societe.id  %}"  > <img class="me-2 image image-small rounded-circle" alt="Image placeholder" src="/static/assets/img/flags/remove_100px.png"></a> </span>
-                                                                    {% endif %}
-                                                                </a>
-                                                                    
-                                                                </td>
-                                                        </tr>
-                                                        {% endfor %}
-                                                        <!-- End of Item -->
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </form>
-                            </tbody>
-                        </table>
-                        {% if request.user.is_staff %}
                             <div class="card-body">
-                                <a class="btn btn-dark animate-hover" href="{% url 'creation_de_societe' %}">
-                                    <i class="fas fa-chevron-left me-3 ps-2 animate-left-3"></i>Ajouter une nouvelle societe</a>
+                                <h5>Form controls</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
 
-                            </div>
-                            {% endif %}
-                            <script>
-                                $('.building-link').click(function(){
-                                    $('#building-name').html($(this).data('name'));
-                                    $('#building-description').html($(this).data('description'));
-                                    $('#building-img').src($(this).data('img'));
-                                });
-                                </script>
+                                    
+                                       
+                                            <div class="form-group">
+                                                <label>RAISON SOCIALE</label>
+                                                <input type="text" class="form-control" placeholder="Raison sociale" name="raisonSocial" value=" {{societes.raisonSocial}} ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Nom</label>
+                                                <input type="text" class="form-control" placeholder="Nom" name="nom" value=" {{societes.nom}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>C.N.I.</label>
+                                                <input type="text" class="form-control" placeholder="CNI" name="{{societes.raisonSocial}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Taxe Professionnel</label>
+                                                <input type="text" class="form-control" placeholder="N° T.P." name="{{societes.tp}}">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Téléphone</label>
+                                                <input type="text" class="form-control" placeholder="N° de Téléphone" name="societes.tel}">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                        
+                                    </div>
+                                    <div class="col-md-6">
+                                      
+                                            <div class="form-group">
+                                                <label>IDENTIFIANT FISCAL</label>
+                                                <input type="text" class="form-control" placeholder="Identifiant Fiscal" name="societes.iff}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Prénom</label>
+                                                <input type="text" class="form-control" placeholder="Prénom" name="societes.prenom}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>I.C.E.</label>
+                                                <input type="text" class="form-control" placeholder="N° I.C.E." name="societes.ice}">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Forme Juridique</label>
+                                                <select class="form-control" id="exampleFormControlSelect1" name="societes.formJuridique}">
+                                                    <option>SARL- Société à Resposabilité limitée</option>
+                                                    <option>SARL AU- Société à Resposabilité limitée à associé unique</option>
+                                                    <option>SA - Société Anonyme</option>
+                                                    <option>PP - Personne Physique</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Numéro de registre de commerce</label>
+                                                <input type="text" class="form-control" placeholder="N° du R.C." name="societes.rc">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Commune</label>
+                                                <select class="form-control" id="exampleFormControlSelect1" name="societes.commune">
+                                                    <option>AGADIR</option>
+                                                    <option>CASABLANCA</option>
+                                                    <option>RABAT</option>
+                                                    <option>MARRAKECH</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Adresse</label> 
+                                                <textarea name="societes.adress" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                            </div>
+                                      
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- [ stiped-table ] end -->
-                </div>
-                <!-- [ Main Content ] end -->
+            </form>
             </div>
         </div>
     </div>
 </div>
 
 {% endblock content %}
-
-<!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
