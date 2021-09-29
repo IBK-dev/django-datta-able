@@ -120,11 +120,17 @@
         <div class="col-md-6 mb-3">
         <label for="commune">type d'etats</label>
         <select class="form-select mb-0" id="commune" aria-label="Gender select example" name="commune">
-                                  
-        <option value="0" >Base</option>
+              <p>
+25    {% if model  %} == "Mensuel"
+26      <option value="0" >Base</option>
         <option value="1" >Developpe</option>
         <option value="2">6 colonnes</option>
         <option value="2">8 colonnes</option>
+29    {% else %}
+30      <option value="2">walo</option>
+        <option value="2">walo2</option>
+31    {% endif %}
+32  </p>
         </select>
         </div>
       </div>

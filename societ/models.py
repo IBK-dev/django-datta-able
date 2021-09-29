@@ -21,6 +21,7 @@ class Societe(models.Model):
         nom=models.CharField(max_length=200)
         ice=models.CharField(max_length=200)
         commune=models.CharField(max_length=200)
+        active=models.BooleanField(default=False)
         #profile_pic=models.ImageField(upload_to='soicetesLogos',null=True, blank=True)
 class  Meta:
         db_table="societ"

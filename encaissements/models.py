@@ -1,7 +1,10 @@
+from exercices.models import Exercices
 from django.contrib.auth.models import User
 from django.db import models
 from django.forms import ModelForm,Textarea
 from django.db import connections
+#from  societ.models import Societe
+#from  exercices.models import Exercices
 
 
 
@@ -17,6 +20,8 @@ class Encaissements(models.Model):
         Montant_HT = models.CharField(max_length=200)
         Montant_TVA = models.CharField(max_length=200)
         Montant_TTC = models.CharField(max_length=200)
+        #societe=models.ForeignKey(Societe,null=True,on_delete=models.SET_NULL)
+        #periode=models.ForeignKey(Exercices,null=True,on_delete=models.SET_NULL)
         
 
         #societe=models.ForeignKey(Societe,null=True,on_delete=models.SET_NULL)
@@ -25,6 +30,8 @@ class  Meta:
         db_table="encaissements"
 
 
+
+        
 
 
 #class simpleUser(models.Model):

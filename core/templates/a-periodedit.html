@@ -30,7 +30,7 @@
         <div class="main-body">
             <div class="page-wrapper">
                 <!-- [ Main Content ] start -->
-                <form action ='{% url 'periodes_creat' %}' method="POST">
+                <form action ='{% url 'Edite_periodes' periodes.id %}' method="POST">
                 {% csrf_token %}
             
 
@@ -51,26 +51,26 @@
                                        
                                             <div class="form-group">
                                                 <label>Nom</label>
-                                                <input type="text" class="form-control" placeholder="Nom" name="Nom">
+                                                <input type="text" class="form-control" placeholder="Nom" name = 'Nom' value="{{periodes.Nom}}">
                                             </div>
                                             <div class="form-group">
                                                 <label>Année</label>
-                                                <input type="text" class="form-control" placeholder="Année" name="Année">
+                                                <input type="text" class="form-control" placeholder="Année" name = 'Année' value="{{periodes.Année}}">
                                             </div>
                                             <div class="form-group">
                                                 <label>Prorata</label>
-                                                <input type="text" class="form-control" placeholder="Prorata" name="Prorata">
+                                                <input type="text" class="form-control" placeholder="Prorata" name = 'Prorata' value="{{periodes.Prorata}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">Régime</label>
-                                                <select class="form-control" id="exampleFormControlSelect1" name="{{societes.Nom}}">
+                                                <select class="form-control" id="exampleFormControlSelect1" name = 'regime' value="{{periodes.regime}}">
                                                     <option>Encaissement</option>
                                                     <option>Débit</option>
                                                 </select>
                                             </div>
                                             <div class="form-group"> 
                                                 <label for="exampleFormControlSelect1">Régime Périodique de déclaration</label>
-                                                <select class="form-control" id="exampleFormControlSelect1" name="periodes">
+                                                <select class="form-control" id="exampleFormControlSelect1" name = 'model' value="periodes.model">
                                                     <option>Mensuel</option>
                                                     <option>Trimestriel</option>
                                                 </select>

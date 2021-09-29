@@ -71,6 +71,16 @@
                                                 <td>{{per.Prorata}}</td>
                                                 <td>{{per.model}}</td>
                                                 <td>{{per.regime}}</td>
+
+                                                <td class="border-0">
+                                                <a href="#" class="d-flex align-items-center">
+                                                    {% if request.user.is_staff %}
+                                                        
+                                                    <span><a  href = "{% url 'Edite_periodes' per.id  %}" class="feather icon-edit-1"></a> </span> 
+                                                    
+                                                    <span><a  href = "{% url 'Delete_periode' per.id  %}" class="feather icon-delete"></a> </span> 
+                                                    {% endif %}
+                                                </a>
                                                </tr>
                                                 {% endfor %}
                                         </tbody>

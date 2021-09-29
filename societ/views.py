@@ -51,8 +51,6 @@ def Edite_societe(request,pk):
            societes.cnss = request.POST.get('cnss')
            societes.formJuridique = request.POST.get('formJuridique')
            societes.adress = request.POST.get('adress')
-           societes.model = request.POST.get('model')
-           
            societes.nom = request.POST.get('nom')
            societes.prenom = request.POST.get('prenom')
            societes.tel = request.POST.get('tel')
@@ -86,14 +84,14 @@ def societe(request):
  if request.user.is_staff:
    societes=Societe.objects.all()
    context={'societes':societes}
-   return render(request,'a-Societelist.html',context)
+   return render(request,'a-societelist.html',context)
  else:
    soc=simpleUser.objects.get(user=request.user.id)
    societes=soc.societe.all()
    context={'societes':societes}
 
    
-   return render(request,'a-Societelist.html',context)
+   return render(request,'a-societelist.html',context)
 
 
 
@@ -110,4 +108,17 @@ def Delete_societe(request,pk):
   deletSociete.delete()
   societes=Societe.objects.all()
   context={'societes':societes}
-  return render(request,'a-Societelist.html',context) 
+  return render(request,'a-societelist.html',context) 
+
+def Activer_societe(request,pk):
+            
+            societes=Societe.objects.get(id=pk)
+            societes.active=True
+            societes.save()
+            societess=Societe.objects.all()
+            for so in societess:
+                   if so.id != societes.id:
+                      so.active=False
+                      so.save()
+            context={'societes':societess}
+            return render(request,'a-societelist.html',context) 
