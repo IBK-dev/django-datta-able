@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/bigihlws/repositories/TVA
+    - /bin/cp -R * $DEPLOYPATH
