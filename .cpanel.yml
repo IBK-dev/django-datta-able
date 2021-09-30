@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/bigihlws/repositories/TVA
-    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/bigihlws/repositories #Add /<sub_folder> if required
+    - /bin/cp -r * $DEPLOYPATH
